@@ -17,8 +17,13 @@
 </section>
 <section class="search-results">
   <header>
-    <h1 class="h3"><%= @customers.count %> Results</h1>
+    <h1 class="h3">Results</h1>
   </header>
+
+  <% if @customers.present?  %>
+      <%= render partial: "pager", locals: { keywords: @keywords, page: @page} %>
+  <% end  %>
+
   <ol class="list-group">
     <% @customers.each do |customer|  %>
       <li class="list-group-item clearfix">
@@ -32,5 +37,9 @@
       </li>
     <% end  %>
   </ol>
+
+  <% if @customers.present?  %>
+      <%= render partial: "pager", locals: { keywords: @keywords, page: @page} %>
+  <% end  %>
 
 </section>

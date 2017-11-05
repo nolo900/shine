@@ -1,0 +1,1 @@
+require('../shine_customer_search');

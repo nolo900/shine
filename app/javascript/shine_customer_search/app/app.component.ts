@@ -51,8 +51,8 @@ export class AppComponent {
     searchCustomers(keywords): void {
         this.customerSearchService
             .searchCustomers(keywords)
-            .subscribe(response => this.customers = response.json().customers as Customer[]);
-            //.subscribe(response => console.log(response.json().customers));
+            .subscribe(response => this.customers = response.customers);
+            //.subscribe(res => console.log(res));
     }
 
 }

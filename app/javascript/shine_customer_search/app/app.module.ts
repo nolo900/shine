@@ -1,16 +1,16 @@
 import { NgModule         } from '@angular/core';
 import { BrowserModule    } from '@angular/platform-browser';
-import { HttpModule       } from '@angular/http';
 import { FormsModule      } from '@angular/forms';
 
 import { AppComponent          } from './app.component';
 import { CustomerSearchService } from "./customer-search.service";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     imports: [
         BrowserModule,
         FormsModule,
-        HttpModule
+        HttpClientModule
     ],
     declarations: [ AppComponent ],
     providers: [ CustomerSearchService ],

@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Customer } from './customer';
-import { CustomerService } from './customer.service';
+import { Component, OnInit     } from '@angular/core';
+import { CustomerSearchService } from './customer-search.service';
+import { Customer              } from './customer';
 
 @Component({
     selector: 'shine-customer-search',
@@ -31,26 +30,29 @@ import { CustomerService } from './customer.service';
       <ol class="list-group">
           <li *ngFor="let customer of customers" class="list-group-item clearfix">
             <h3 class="pull-right">
-              <small class="text-uppercase">Joined</small>date</h3>
+              <small class="text-uppercase">Joined</small>{{customer.created_at}}</h3>
             <h2 class="h3">
-                {{customer.name}}
-              <small>john_smith88</small>
+                {{customer.first_name}} {{customer.last_name}}
+              <small>{{customer.username}}</small>
             </h2>
-            <div>john@smith.com</div>
+            <div>{{customer.email}}</div>
            </li>
       </ol>
     </section>
 `,
-    providers: [CustomerService]
+    providers: [CustomerSearchService]
 })
 
 export class AppComponent {
-    customers: Customer[];
-    keywords = "";
-    constructor(private customerService: CustomerService) {}
+    customers: Customer[] = [];
+    keywords: string = '';
+    constructor(private customerSearchService: CustomerSearchService) {}
 
     searchCustomers(keywords): void {
-        // this.customerService.searchCustomers(keywords).then(customers => this.customers = customers);
-        this.customerService.getCustomers().then(customers => this.customers = customers);
+        this.customerSearchService
+            .searchCustomers(keywords)
+            .subscribe(response => this.customers = response.json().customers as Customer[]);
+            //.subscribe(response => console.log(response.json().customers));
     }
+
 }

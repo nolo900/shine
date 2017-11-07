@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class CustomerSearchService {
@@ -9,8 +10,12 @@ export class CustomerSearchService {
     constructor(private http: HttpClient) {}
 
     searchCustomers(keywords:string):Observable<any> {
-        return this.http
-            .get(`/customers.json?keywords=${keywords}`);
+        if (keywords.length < 3) {
+            return Observable.of([]);
+        } else {
+            return this.http
+                .get(`/customers.json?keywords=${keywords}`);
+        }
     }
 
 }

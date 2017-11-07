@@ -10,17 +10,22 @@ import { Customer              } from './customer';
     </header>
     <section>
         <div class="input-group input-group-lg">
-            <label for="keywords"></label>
-            <input #keywords
+            
+            <!--<div class="form-group has-feedback">-->
+                <label for="keywords"></label>
+                <input 
+                   bind-ngModel = 'keywords'
+                   on-ngModelChange = "searchCustomers($event)"
                    type="text"
                    id="keywords"
                    name="keywords"
-                   placeholder="First Name, Last Name, Email" 
+                   placeholder="Search" 
                    class="form-control input-lg"
+                   autocomplete="off"
                    >
-            <span class="input-group-btn">
-             <button (click)="searchCustomers(keywords.value)" class='btn btn-primary btn-lg' type='submit'><i class="glyphicon glyphicon-search"></i></button>
-            </span>
+                 <i class="glyphicon glyphicon-search form-control-feedback"></i>
+            <!--</div>-->
+            
         </div>
     </section>
     <section class="search-results">
@@ -40,7 +45,13 @@ import { Customer              } from './customer';
       </ol>
     </section>
 `,
-    providers: [CustomerSearchService]
+    providers: [CustomerSearchService],
+    styles:[
+    `
+        .input-group-lg{
+            width: 100%;
+        }
+    `]
 })
 
 export class AppComponent {

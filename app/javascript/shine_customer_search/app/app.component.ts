@@ -35,7 +35,7 @@ import { Customer              } from './customer';
       <ol class="list-group">
           <li *ngFor="let customer of customers" class="list-group-item clearfix">
             <h3 class="pull-right">
-              <small class="text-uppercase">Joined</small>{{customer.created_at}}</h3>
+              <small class="text-uppercase">Joined </small>{{ customer.created_at | date : "yyyy-MM-dd" }}</h3>
             <h2 class="h3">
                 {{customer.first_name}} {{customer.last_name}}
               <small>{{customer.username}}</small>

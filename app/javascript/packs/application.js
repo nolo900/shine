@@ -8,6 +8,16 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import "./application.css";
-import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/css/bootstrap.css";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import CustomerLookup from './CustomerLookup';
 
 console.log('Hello World from Webpacker');
+
+document.addEventListener('DOMContentLoaded', () => {
+    ReactDOM.render(
+        <CustomerLookup name="Props Name" />,
+        document.getElementById('root'),
+    )
+})

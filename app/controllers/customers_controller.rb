@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
 
-  PAGE_SIZE = 10
+  PAGE_SIZE = 100
 
 
   def index

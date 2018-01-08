@@ -32,7 +32,7 @@ class CustomerLookup extends Component {
     render() {
         return (
             <div className="CustomerLookup">
-                <CustomerSearchForm search={this.searchCustomers} />
+                <CustomerSearchForm searchCustomers={this.searchCustomers.bind(this)} />
                 <CustomerSearchResults customers={this.state.customers}/>
             </div>
         );

@@ -11,12 +11,12 @@ class CustomerSearchForm extends Component {
     }
 
     handleChange(event) {
-        this.props.search(event.target.value);
-        // this.setState({value: event.target.value});
+        this.props.searchCustomers(event.target.value);
+        this.setState({value: event.target.value});
     }
 
     handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
+        console.log('A name was submitted: ' + this.state.value);
         event.preventDefault();
     }
 
@@ -28,21 +28,19 @@ class CustomerSearchForm extends Component {
                     <h1 className="h2">Customer Search</h1>
                 </header>
                 <section>
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="input-group input-group-lg">
-                            <label className="sr-only" htmlFor="keywords">Keywords</label>
-                            <input
-                                type="text"
-                                name="keywords"
-                                id="keywords"
-                                placeholder="Search"
-                                className="form-control input-lg"
-                                value={this.state.value}
-                                onChange={this.handleChange}/>
-                            <i className="glyphicon glyphicon-search form-control-feedback"></i>
-                            <input type="submit" value="Submit" />
-                        </div>
-                    </form>
+
+                    <div className="input-group input-group-lg">
+                        <label className="sr-only" htmlFor="keywords">Keywords</label>
+                        <input
+                            type="text"
+                            name="keywords"
+                            id="keywords"
+                            placeholder="Search"
+                            className="form-control input-lg"
+                            value={this.state.value}
+                            onChange={this.handleChange}/>
+                        <i className="glyphicon glyphicon-search form-control-feedback"></i>
+                    </div>
                 </section>
             </div>
         );

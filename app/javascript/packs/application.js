@@ -17,7 +17,7 @@ console.log('Hello World from Webpacker');
 
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
-        <CustomerLookup name="Props Name" />,
+        <CustomerLookup/>,
         document.getElementById('root'),
     )
 })

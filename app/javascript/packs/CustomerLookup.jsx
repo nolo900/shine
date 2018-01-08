@@ -1,31 +1,39 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
-import CustomerSearchForm from './components/CustomerSearchForm'
+import CustomerSearchForm from './components/CustomerSearchForm';
+import CustomerSearchResults from './components/CustomerSearchResults';
 
 class CustomerLookup extends Component {
 
     constructor(){
         super();
         this.state = {
-            name: 'CustomerLookup',
-            customers: [
-                {
-                    firstName: 'Austin',
-                    lastName: 'Miles'
-                },
-                {
-                    firstName: 'Lauren',
-                    lastName: 'Miles'
-                }
-            ]
+            customers: []
         }
     }
 
+    componentDidMount() {
+        fetch('/customers.json?keywords=pat',{credentials: "same-origin"})
+            .then(response => {
+                return response.json();
+            }).then(data => {
+            this.setState({customers: data.customers})
+        });
+    }
+
+    searchCustomers(keywords) {
+        fetch(`/customers.json?keywords=${keywords}`,{credentials: "same-origin"})
+            .then(response => {
+                return response.json();
+            }).then(data => {
+            this.setState({customers: data.customers})
+        });
+    }
 
     render() {
         return (
             <div className="CustomerLookup">
-                <div>React Customer Lookup: {this.state.name}!</div>
+                <CustomerSearchForm search={this.searchCustomers} />
+                <CustomerSearchResults customers={this.state.customers}/>
             </div>
         );
     }

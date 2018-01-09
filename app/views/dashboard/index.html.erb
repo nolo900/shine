@@ -1,10 +1,17 @@
-<header>
-  <%= image_tag 'logo-1.png' %>
-  <h1>Welcome to Shine, <%= current_user.email %>! </h1>
+<header class="navbar">
+  <div class="logo-container text-center">
+    <%= image_tag 'react-logo.svg', height:100, width:100 %>
+  </div>
 
-  <h2>We're using Rails <%= Rails.version %></h2>
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, class:'btn btn-primary pull-right' %>
 </header>
 <section>
-  <p>Future home of Shine's Dashboard</p>
-  <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+
+  <div class="text-center">
+
+    <h1>Welcome to Shine, <%= current_user.email %>! </h1>
+    <h2>We're using Rails <%= Rails.version %></h2>
+
+    <%= link_to 'Lookup Customers',customers_path, class: 'btn btn-primary' %>
+  </div>
 </section>

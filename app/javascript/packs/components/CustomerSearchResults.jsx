@@ -11,14 +11,14 @@ class CustomerSearchResults extends Component {
         return (
             <section className="search-results">
                 <header>
-                    <h1 className="h3">Results</h1>
+                    <h1 className="h3">Results {this.props.customers.length}</h1>
                 </header>
 
                 <ol className="list-group">
                     { this.props.customers.map((customer) => (
                         <li key={customer.id} className="list-group-item clearfix">
                             <h3 className="pull-right">
-                                <small className="text-uppercase">Joined</small> {customer.created_at}</h3>
+                                <small className="text-uppercase">Joined</small> {new Date(customer.created_at).toDateString()}</h3>
                             <h2 className="h3">
                                 {customer.first_name} {customer.last_name}
                                 <small>{customer.email}</small>

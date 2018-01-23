@@ -13,3 +13,31 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+    border-radius: 0 !important;
+}
+
+.container {
+    width: 100% !important;
+}
+
+.logo-container{
+    padding: 20px;
+    width: 100%;
+    background-color: black;
+
+}
+
+.spin{
+    animation: rotation 7s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}

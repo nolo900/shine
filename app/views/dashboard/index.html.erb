@@ -1,17 +1,12 @@
-<header class="navbar">
-  <div class="logo-container text-center">
-    <%= image_tag 'react-logo.svg', height:100, width:100 %>
-  </div>
-
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, class:'btn btn-primary pull-right' %>
-</header>
 <section>
 
   <div class="text-center">
 
-    <h1>Welcome to Shine, <%= current_user.email %>! </h1>
-    <h2>We're using Rails <%= Rails.version %></h2>
+    <h2>Welcome to Shine, our demo Customer Management App.</h2>
+    <h2>If you run a service business you know how essential it is to be able to access and modify your customer data as fast as possible.</h2>
+    <h2>This demo app shows features that can be custom built for your business. Imgaine what is possible...</h2>
+    <!--<h2>We're using Rails <%= Rails.version %></h2>-->
 
-    <%= link_to 'Lookup Customers',customers_path, class: 'btn btn-primary' %>
+    <%= link_to 'Explore Customers',customers_path, class: 'btn btn-primary' %>
   </div>
 </section>

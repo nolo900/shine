@@ -21,9 +21,9 @@ class CustomerSearchResults extends Component {
                                 <small className="text-uppercase">Joined</small> {new Date(customer.created_at).toDateString()}</h3>
                             <h2 className="h3">
                                 {customer.first_name} {customer.last_name}
-                                <small>{customer.email}</small>
                             </h2>
-                            <div>{ customer.username }</div>
+                            <div>{ customer.email }</div>
+                            <div className="btn btn-info pull-right">Details</div>
                         </li>
                         )
                     )}

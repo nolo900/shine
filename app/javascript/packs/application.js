@@ -8,7 +8,13 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import "./application.css";
+
+import $ from 'jquery';
+global.$ = $;
+global.jQuery = $;
+
 import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.js";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom'

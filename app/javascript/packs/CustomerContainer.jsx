@@ -20,7 +20,7 @@ class CustomerContainer extends Component {
             <div>
                 <Switch>
                     <Route exact path='/customers/' component={CustomerFinder}/>
-                    <Route exact path='/customers/detail' component={CustomerDetail}/>
+                    <Route path='/customers/:id' component={CustomerDetail}/>
                 </Switch>
             </div>
         )

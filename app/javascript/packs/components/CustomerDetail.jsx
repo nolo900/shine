@@ -5,7 +5,17 @@ class CustomerDetail extends Component {
 
     constructor(props){
         super(props);
-        this.state = { }
+        this.state = { customer: {} };
+    }
+
+    componentDidMount(props) {
+        console.log(this.props.match.params.id);
+        fetch(`/api/customers/${this.props.match.params.id}.json`,{credentials: "same-origin"})
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+                this.setState({customer: json});
+        });
     }
 
     render() {
@@ -26,18 +36,16 @@ class CustomerDetail extends Component {
                                     <div className="row">
                                         <div className="col-md-4">
                                             <div className="form-group">
-                                                <label className="sr-only" htmlFor="first-name">
-                                                    First Name
-                                                </label>
+                                                <label className="sr-only" htmlFor="first-name">First Name</label>
                                                 <input type="text" className="form-control"
-                                                       name="first-name" value="Pat" />
+                                                       name="first-name" value={this.state.customer.first_name} />
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="form-group">
                                                 <label className="sr-only" htmlFor="last-name">Last Name</label>
                                                 <input type="text" className="form-control"
-                                                       name="last-name" value="Jones" />
+                                                       name="last-name" value={this.state.customer.last_name} />
                                             </div>
                                         </div>
                                         <div className="col-md-4">
@@ -46,7 +54,7 @@ class CustomerDetail extends Component {
                                                 <div className="input-group">
                                                     <div className="input-group-addon">@</div>
                                                     <input type="text" className="form-control"
-                                                           name="username" value="pat123" />
+                                                           name="username" value={this.state.customer.username} />
                                                 </div>
                                             </div>
                                         </div>
@@ -54,11 +62,11 @@ class CustomerDetail extends Component {
                                     <div className="form-group">
                                         <label className="sr-only" htmlFor="email">Email</label>
                                         <input type="text" className="form-control"
-                                               name="email" value="pattyj@somewhere.net" />
+                                               name="email" value={this.state.customer.email} />
                                     </div>
                                 </section>
                                 <footer className="panel-footer">
-                                    <label htmlFor="joined">Joined</label> 12/13/2014
+                                    <label htmlFor="joined">Joined</label>  {new Date(this.state.customer.created_at).toDateString()}
                                 </footer>
                             </article>
                             <article className="panel panel-default">

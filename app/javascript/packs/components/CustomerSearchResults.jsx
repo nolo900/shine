@@ -24,7 +24,7 @@ class CustomerSearchResults extends Component {
                                 {customer.first_name} {customer.last_name}
                             </h2>
                             <div>{ customer.email }</div>
-                            <div><Link to='/customers/detail' className="btn btn-info pull-right">Details</Link></div>
+                            <div><Link to={`/customers/${customer.id}`} className="btn btn-info pull-right">Details</Link></div>
                         </li>
                         )
                     )}

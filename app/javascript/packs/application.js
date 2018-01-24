@@ -11,13 +11,18 @@ import "./application.css";
 import "bootstrap/dist/css/bootstrap.css";
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CustomerLookup from './CustomerLookup';
+import { BrowserRouter } from 'react-router-dom'
+import CustomerContainer from './CustomerContainer';
 
-console.log('Hello World from Webpacker');
+console.log('Webpacker loaded.');
 
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
-        <CustomerLookup/>,
+        <BrowserRouter>
+            <CustomerContainer />
+        </BrowserRouter>
+        ,
         document.getElementById('root'),
     )
 });
+

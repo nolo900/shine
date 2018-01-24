@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CustomerSearchForm from './components/CustomerSearchForm';
-import CustomerSearchResults from './components/CustomerSearchResults';
+import CustomerSearchForm from './CustomerSearchForm';
+import CustomerSearchResults from './CustomerSearchResults';
 
-class CustomerLookup extends Component {
+class CustomerFinder extends Component {
 
     constructor(){
         super();
@@ -32,7 +32,7 @@ class CustomerLookup extends Component {
 
     render() {
         return (
-            <div className="CustomerLookup">
+            <div className="customer-finder">
                 <CustomerSearchForm searchCustomers={this.searchCustomers.bind(this)} />
                 <CustomerSearchResults customers={this.state.customers}/>
             </div>
@@ -41,4 +41,4 @@ class CustomerLookup extends Component {
 
 }
 
-export default CustomerLookup;
+export default CustomerFinder;

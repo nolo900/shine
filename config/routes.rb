@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :customers, only: [:index]
+  get '/customers', to: 'customers#index'
+  get '/customers/*path', to: 'customers#index'
   root to: 'dashboard#index'
-  get '*path', to: 'dashboard#index'
 end

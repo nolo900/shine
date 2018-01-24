@@ -5,7 +5,14 @@ class CustomerDetail extends Component {
 
     constructor(props){
         super(props);
-        this.state = { customer: {} };
+        this.state = { customer: {
+            id: '',
+            first_name: '',
+            last_name: '',
+            email: '',
+            username: ''
+        } };
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     componentDidMount(props) {
@@ -16,6 +23,22 @@ class CustomerDetail extends Component {
                 console.log(json);
                 this.setState({customer: json});
         });
+    }
+
+    handleInputChange(event) {
+
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState({
+            ...this.state,
+            customer: {
+                ...this.state.customer,
+                [name]: value
+            }
+        });
+        console.log(this.state);
     }
 
     render() {
@@ -37,15 +60,21 @@ class CustomerDetail extends Component {
                                         <div className="col-md-4">
                                             <div className="form-group">
                                                 <label className="sr-only" htmlFor="first-name">First Name</label>
-                                                <input type="text" className="form-control"
-                                                       name="first-name" value={this.state.customer.first_name} />
+                                                <input type="text"
+                                                       className="form-control"
+                                                       name="first_name"
+                                                       value={this.state.customer.first_name}
+                                                       onChange={this.handleInputChange} />
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="form-group">
                                                 <label className="sr-only" htmlFor="last-name">Last Name</label>
-                                                <input type="text" className="form-control"
-                                                       name="last-name" value={this.state.customer.last_name} />
+                                                <input type="text"
+                                                       className="form-control"
+                                                       name="last_name"
+                                                       value={this.state.customer.last_name}
+                                                       onChange={this.handleInputChange} />
                                             </div>
                                         </div>
                                         <div className="col-md-4">
@@ -53,16 +82,22 @@ class CustomerDetail extends Component {
                                                 <label className="sr-only" htmlFor="username">Username</label>
                                                 <div className="input-group">
                                                     <div className="input-group-addon">@</div>
-                                                    <input type="text" className="form-control"
-                                                           name="username" value={this.state.customer.username} />
+                                                    <input type="text"
+                                                           className="form-control"
+                                                           name="username"
+                                                           value={this.state.customer.username}
+                                                           onChange={this.handleInputChange} />
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label className="sr-only" htmlFor="email">Email</label>
-                                        <input type="text" className="form-control"
-                                               name="email" value={this.state.customer.email} />
+                                        <input type="text"
+                                               className="form-control"
+                                               name="email"
+                                               value={this.state.customer.email}
+                                               onChange={this.handleInputChange} />
                                     </div>
                                 </section>
                                 <footer className="panel-footer">
@@ -81,28 +116,28 @@ class CustomerDetail extends Component {
                                             Street Address
                                         </label>
                                         <input type="text" className="form-control"
-                                               name="street-address" value="123 Any St" />
+                                               name="street-address" placeholder="123 Any St" />
                                     </div>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label className="sr-only" htmlFor="city">City</label>
                                                 <input type="text" className="form-control"
-                                                       name="city" value="Washington" />
+                                                       name="city" placeholder="Washington" />
                                             </div>
                                         </div>
                                         <div className="col-md-2">
                                             <div className="form-group">
                                                 <label className="sr-only" htmlFor="state">State</label>
                                                 <input type="text" className="form-control"
-                                                       name="state" value="DC" />
+                                                       name="state" placeholder="DC" />
                                             </div>
                                         </div>
                                         <div className="col-md-4">
                                             <div className="form-group">
                                                 <label className="sr-only" htmlFor="zip">Zip</label>
                                                 <input type="text" className="form-control"
-                                                       name="zip" value="20001" />
+                                                       name="zip" placeholder="20001" />
                                             </div>
                                         </div>
                                     </div>
@@ -150,28 +185,28 @@ class CustomerDetail extends Component {
                                                     Street Address
                                                 </label>
                                                 <input type="text" className="form-control"
-                                                       name="street-address" value="123 Any St" />
+                                                       name="street-address" placeholder="123 Any St" />
                                             </div>
                                             <div className="row">
                                                 <div className="col-md-6">
                                                     <div className="form-group">
                                                         <label className="sr-only" htmlFor="city">City</label>
                                                         <input type="text" className="form-control"
-                                                               name="city" value="Washington" />
+                                                               name="city" placeholder="Washington" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-2">
                                                     <div className="form-group">
                                                         <label className="sr-only" htmlFor="state">State</label>
                                                         <input type="text" className="form-control"
-                                                               name="state" value="DC" />
+                                                               name="state" placeholder="DC" />
                                                     </div>
                                                 </div>
                                                 <div className="col-md-4">
                                                     <div className="form-group">
                                                         <label className="sr-only" htmlFor="zip">Zip</label>
                                                         <input type="text" className="form-control"
-                                                               name="zip" value="20001" />
+                                                               name="zip" placeholder="20001" />
                                                     </div>
                                                 </div>
                                             </div>

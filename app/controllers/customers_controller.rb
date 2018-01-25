@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
 
-  PAGE_SIZE = 1000
+  PAGE_SIZE = 100
 
   # GET /customers
   # GET /customers.json

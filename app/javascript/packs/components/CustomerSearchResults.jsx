@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import '../fade_styles.css';
 
 class CustomerSearchResults extends Component {
 
     constructor(props){
         super(props);
-        this.state = { in: false };
+        this.state = { };
     }
 
     render() {
@@ -14,7 +15,7 @@ class CustomerSearchResults extends Component {
         const Fade = ({ children, ...props }) => (
             <CSSTransition
                 {...props}
-                timeout={500}
+                timeout={2500}
                 classNames="fade"
             >
                 {children}
@@ -42,7 +43,7 @@ class CustomerSearchResults extends Component {
         return (
             <section className="search-results">
                 <header>
-                    <h1 className="h3">Results {this.props.customers.length}</h1>
+                    <h1 className="h3">Results { (this.props.customers.length == 100) ? '100+' : this.props.customers.length} </h1>
                 </header>
 
                 <ol className="list-group">

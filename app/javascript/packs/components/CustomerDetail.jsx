@@ -5,15 +5,19 @@ class CustomerDetail extends Component {
 
     constructor(props){
         super(props);
-        this.state = { customer: {
-            id: '',
-            first_name: '',
-            last_name: '',
-            email: '',
-            username: ''
-        } };
+        this.state = {
+            customer: {
+                id: '',
+                first_name: '',
+                last_name: '',
+                email: '',
+                username: ''
+            },
+            uploadedFileURL: ''
+        };
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.readFile = this.readFile.bind(this);
     }
 
     componentDidMount(props) {
@@ -59,6 +63,18 @@ class CustomerDetail extends Component {
             .catch(error => console.error('Error:', error))
             .then(response => console.log('Success:', response));
 
+    }
+
+    readFile(event){
+        console.log(event.target.files);
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            let preview = document.getElementById('img-preview');
+            preview.setAttribute('src', e.target.result);
+            preview.setAttribute('width',(window.screen.width/2).toString());
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
     }
 
     render() {
@@ -235,6 +251,24 @@ class CustomerDetail extends Component {
                             </article>
                         </div>
                     </div>
+                    <hr/>
+                        <div class="row text-center">
+                            <input type="file"
+                                   accept="image/*"
+                                   id="selfie"
+                                   name="selfie"
+                                   capture="camera"
+                                   className="inputfile"
+                                   onChange={(event)=> {
+                                       this.readFile(event)
+                                   }}
+                            />
+                            <label htmlFor="selfie">Upload Image</label>
+                        </div>
+                        <div className="text-center">
+                            <img className="text-center" id="img-preview" src=""  />
+                        </div>
+                    <hr/>
                     <input type="submit" value="Submit" className="btn btn-block btn-success" />
                 </form>
 

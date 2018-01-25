@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 class CustomerDetail extends Component {
 
@@ -18,6 +19,7 @@ class CustomerDetail extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.readFile = this.readFile.bind(this);
+        this.notifySuccess = this.notifySuccess.bind(this);
     }
 
     componentDidMount(props) {
@@ -29,6 +31,9 @@ class CustomerDetail extends Component {
                 this.setState({customer: json});
         });
     }
+
+    notifySuccess = () => toast.success("User Details Saved!");
+    notifyFailure = () => toast("Whoops, try again!");
 
     handleInputChange(event) {
 
@@ -61,7 +66,12 @@ class CustomerDetail extends Component {
             })
         }).then(res => res.json())
             .catch(error => console.error('Error:', error))
-            .then(response => console.log('Success:', response));
+            .then(
+                (response) => {
+                    console.log('Success:', response);
+                    this.notifySuccess();
+                }
+            );
 
     }
 
@@ -80,6 +90,7 @@ class CustomerDetail extends Component {
     render() {
         return (
             <section className="customer-detail">
+                <ToastContainer />
                 <Link to='/customers' className="btn btn-info">Back</Link>
                 <hr/>
                 <form onSubmit={this.handleSubmit}>
@@ -252,7 +263,7 @@ class CustomerDetail extends Component {
                         </div>
                     </div>
                     <hr/>
-                        <div class="row text-center">
+                        <div className="row text-center">
                             <input type="file"
                                    accept="image/*"
                                    id="selfie"
@@ -269,7 +280,7 @@ class CustomerDetail extends Component {
                             <img className="text-center" id="img-preview" src=""  />
                         </div>
                     <hr/>
-                    <input type="submit" value="Submit" className="btn btn-block btn-success" />
+                    <input type="submit" value="Submit" className="btn btn-block btn-success form-submit-btn" />
                 </form>
 
             </section>

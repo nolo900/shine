@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'application' %>
+    <%= favicon_link_tag 'favicon.ico' %>
   </head>
 
   <body>
@@ -18,7 +19,7 @@
 
           <div class="navbar-header">
             <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K" alt="" height="100" class="spin navbar-brand">
-            <a class="navbar-brand" href="#">Your Service, Inc.</a>
+            <a class="navbar-brand" href="#">At Your Service, Inc.</a>
 
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
               <span class="icon-bar"></span>
@@ -38,12 +39,39 @@
         </div>
       </header>
 
-      <div class="container">
+      <div class="container main">
         <% if notice.present? %><aside class="alert alert-info"><%= notice %></aside><% end  %>
         <% if alert.present? %><aside class="alert alert-danger"><%= alert %></aside><% end %>
 
         <%= yield %>
       </div>
+
+      <footer>
+        <div class="container">
+
+          <div class="row text-center">
+            <ul class="list-inline">
+
+              <li><a href="https://github.com/nolo900" target="_blank"><i class="fa fa-github"></i></a></li>
+              <li><a href="https://linkedin.com/in/austinbmiles/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              <li><a href="https://calendly.com/goldenratio" target="_blank"><i class="fa fa-calendar" style="font-size:20px"></i></a></li>
+
+
+            </ul>
+          </div>
+
+          <div class="row text-center">
+            <ul class="menu list-inline">
+              <li><a href="https://www.goldenratioconsulting.com" target="_blank">GOLDEN RATIO CONSULTING, LLC</a></li>
+              <li><a href="mailto:abm@goldenratioconsulting.com" target="_blank">ABM@GOLDENRATIOCONSULTING.COM</a></li>
+              <li><a href="tel:14049066768">+1.404.906.6768</a></li>
+            </ul>
+          </div>
+
+
+        </div>
+      </footer>
+
     </div>
 
   </body>

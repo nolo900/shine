@@ -34,3 +34,7 @@
 img[src=""] {
     display: none;
 }
+
+.form-submit-btn{
+    margin-bottom: 30px !important;
+}

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import '../fade_styles.css';
+import '../fade_styles.scss';
 
 class CustomerSearchResults extends Component {
 

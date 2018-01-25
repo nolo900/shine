@@ -13,9 +13,11 @@
  *= require_tree .
  *= require_self
  */
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 
 * {
     border-radius: 0 !important;
+    font-family: 'Quicksand', sans-serif;
 }
 
 .container {
@@ -40,4 +42,29 @@
     to {
         -webkit-transform: rotate(359deg);
     }
+}
+
+footer{
+    background-color:#222222;
+    padding: 60px 0px;
+}
+
+footer .menu li a{
+    color:#b1aca1;
+    padding:10px;
+    text-decoration:none;
+}
+
+footer .menu li a:hover{
+    color:#7dabdb;
+}
+
+.fa.fa-facebook , .fa.fa-dropbox, .fa.fa-flickr , .fa.fa-github , .fa.fa-linkedin ,.fa,fa-tumblr ,.fa.fa-google-plus , .fa.fa-tumblr {
+    color:#b1aca1;
+    font-size:20px;
+    padding:10px;
+}
+
+.main {
+    min-height: 100vh;
 }

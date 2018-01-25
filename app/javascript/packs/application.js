@@ -15,20 +15,39 @@ global.jQuery = $;
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
+import "font-awesome/css/font-awesome.css"
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import CustomerContainer from './CustomerContainer';
 
 console.log('Webpacker loaded.');
 
+
 document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
         <BrowserRouter>
-            <CustomerContainer />
+            <ScrollToTop>
+                <CustomerContainer />
+            </ScrollToTop>
         </BrowserRouter>
         ,
         document.getElementById('root'),
     )
 });
+
+class ScrollToTop extends React.Component {
+    componentDidUpdate(prevProps) {
+        if (this.props.location !== prevProps.location) {
+            window.scrollTo(0, 0)
+        }
+    }
+
+    render() {
+        return this.props.children;
+    }
+}
+
+export default withRouter(ScrollToTop);
 

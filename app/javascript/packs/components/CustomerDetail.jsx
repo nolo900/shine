@@ -13,6 +13,7 @@ class CustomerDetail extends Component {
             username: ''
         } };
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount(props) {
@@ -41,12 +42,31 @@ class CustomerDetail extends Component {
         console.log(this.state);
     }
 
+    handleSubmit(event) {
+        console.log(this.state);
+        event.preventDefault();
+
+        fetch(`/api/customers/${this.props.match.params.id}.json`, {
+            method: 'PATCH',
+            body: JSON.stringify(this.state.customer),
+            credentials: 'same-origin',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            })
+        }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => console.log('Success:', response));
+
+    }
+
     render() {
         return (
             <section className="customer-detail">
                 <Link to='/customers' className="btn btn-info">Back</Link>
                 <hr/>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <div className="row">
                         <div className="col-md-6">
                             <article className="panel panel-info">
@@ -215,6 +235,7 @@ class CustomerDetail extends Component {
                             </article>
                         </div>
                     </div>
+                    <input type="submit" value="Submit" className="btn btn-block btn-warning" />
                 </form>
 
             </section>

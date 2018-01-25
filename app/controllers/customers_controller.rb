@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  skip_before_action :verify_authenticity_token  #not sure how to get token auth to work with react
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
 
@@ -51,7 +52,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.save
         format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
+        format.json { render json: @customer, status: :created }
       else
         format.html { render :new }
         format.json { render json: @customer.errors, status: :unprocessable_entity }

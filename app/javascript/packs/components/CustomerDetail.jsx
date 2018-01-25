@@ -69,7 +69,7 @@ class CustomerDetail extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="row">
                         <div className="col-md-6">
-                            <article className="panel panel-info">
+                            <article className="panel panel-default">
                                 <header className="panel-heading">
                                     <h1 className="h3">
                                         Customer
@@ -235,7 +235,7 @@ class CustomerDetail extends Component {
                             </article>
                         </div>
                     </div>
-                    <input type="submit" value="Submit" className="btn btn-block btn-warning" />
+                    <input type="submit" value="Submit" className="btn btn-block btn-success" />
                 </form>
 
             </section>

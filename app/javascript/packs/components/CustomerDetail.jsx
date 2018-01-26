@@ -210,11 +210,6 @@ class CustomerDetail extends Component {
                                                     <label>Expires:</label> 04/19
                                                 </p>
                                             </div>
-                                            <div className="col-md-5 text-right">
-                                                <button className="btn btn-lg btn-default">
-                                                    View Details
-                                                </button>
-                                            </div>
                                         </div>
                                     </article>
                                     <hr />

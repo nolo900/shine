@@ -68,3 +68,7 @@ footer .menu li a:hover{
 .main {
     min-height: 100vh;
 }
+
+.explore-btn {
+    margin-bottom: 20px !important;
+}

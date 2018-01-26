@@ -17,7 +17,7 @@ class CustomerSearchForm extends Component {
         return (
             <div>
                 <header>
-                    <h1 className="h2">Customer Search</h1>
+                    <h1 className="h2">Quickly Search Millions of Customer Records</h1>
                 </header>
                 <section>
 

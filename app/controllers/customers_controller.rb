@@ -19,7 +19,19 @@ class CustomersController < ApplicationController
           order(customer_search_term.order).
           offset(PAGE_SIZE * @page).limit(PAGE_SIZE)
     else
-      @customers = []
+
+      @customers = Customer.all.limit(PAGE_SIZE)
+
+      # @customers = Customer.where("lower(first_name) LIKE :first_name OR " +
+      #                                 "lower(last_name) LIKE :last_name OR " +
+      #                                 "lower(email) LIKE :email",
+      #                             {
+      #                                 first_name: "pat%",
+      #                                 last_name: "pat%",
+      #                                 email: "pat%"
+      #                             })
+      #                  .order("last_name, email").limit(PAGE_SIZE);
+
     end
 
     respond_to do |format|

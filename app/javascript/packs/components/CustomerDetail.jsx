@@ -280,7 +280,7 @@ class CustomerDetail extends Component {
                             <img className="text-center" id="img-preview" src=""  />
                         </div>
                     <hr/>
-                    <input type="submit" value="Submit" className="btn btn-block btn-success form-submit-btn" />
+                    <input type="submit" value="Save" className="btn btn-block btn-success form-submit-btn" />
                 </form>
 
             </section>

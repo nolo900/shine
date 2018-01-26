@@ -10,6 +10,11 @@ class CustomerSearchResults extends Component {
         this.state = { };
     }
 
+    getRandomInt(max) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+    // {new Date(customer.created_at).toDateString()}
+
     render() {
 
         const Fade = ({ children, ...props }) => (
@@ -29,10 +34,10 @@ class CustomerSearchResults extends Component {
                     key={customer.id}
                     className="list-group-item clearfix"
                     >
-                    <h3 className="pull-right">
-                        <small className="text-uppercase">Joined</small> {new Date(customer.created_at).toDateString()}</h3>
+
+                    <h3 className="pull-right"><small className="text-uppercase">Customer Lifetime Value</small> ${this.getRandomInt(20000)}</h3>
                     <h2 className="h3">
-                        {customer.first_name} {customer.last_name}
+                        <Link to={`/customers/${customer.id}`}>{customer.first_name} {customer.last_name}</Link>
                     </h2>
                     <div>{ customer.email }</div>
                     <div><Link to={`/customers/${customer.id}`} className="btn btn-info pull-right">Details</Link></div>

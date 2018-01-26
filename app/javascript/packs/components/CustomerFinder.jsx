@@ -12,7 +12,7 @@ class CustomerFinder extends Component {
     }
 
     componentDidMount() {
-        fetch('/customers.json?keywords=aus',{credentials: "same-origin"})
+        fetch('/customers.json',{credentials: "same-origin"})
             .then(response => {
                 return response.json();
             }).then(data => {
@@ -21,7 +21,7 @@ class CustomerFinder extends Component {
     }
 
     searchCustomers(keywords) {
-        if(keywords.length < 3){return}
+        if(keywords.length < 2){return}
         fetch(`/customers.json?keywords=${keywords}`,{credentials: "same-origin"})
             .then(response => {
                 return response.json();

@@ -16,6 +16,8 @@ global.jQuery = $;
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "font-awesome/css/font-awesome.css"
+import "signature_pad/dist/signature_pad.js";
+import SignaturePad from 'signature_pad/dist/signature_pad'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -24,8 +26,30 @@ import CustomerContainer from './CustomerContainer';
 
 console.log('Webpacker loaded.');
 
+document.addEventListener('DOMContentLoaded', () => {
+    let canvas = document.querySelector("canvas");
+    let signaturePad = new SignaturePad(canvas);
+    let clearButton = document.getElementById('clearSig');
+    fitToContainer(canvas);
+
+    function fitToContainer(canvas){
+        // Make it visually fill the positioned parent
+        canvas.style.width ='100%';
+        canvas.style.height='100%';
+        // ...then set the internal size to match
+        canvas.width  = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+    }
+
+    clearButton.addEventListener("click", function (event) {
+        signaturePad.clear();
+    });
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
+
+
     ReactDOM.render(
         <BrowserRouter>
             <ScrollToTop>
@@ -34,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         </BrowserRouter>
         ,
         document.getElementById('root'),
-    )
+    );
 });
 
 class ScrollToTop extends React.Component {
@@ -50,4 +74,3 @@ class ScrollToTop extends React.Component {
 }
 
 export default withRouter(ScrollToTop);
-

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   scope 'api' do
     resources :customers
   end
+  get '/signatures', to: 'signatures#index'
   root to: 'dashboard#index'
 end

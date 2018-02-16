@@ -22,7 +22,7 @@ class CustomerFinder extends Component {
     }
 
     searchCustomers(keywords) {
-        // if(keywords.length < 2){return}
+        if(keywords.length < 2){return}
         this.setState({ isLoading: true });
         fetch(`/customers.json?keywords=${keywords}`,{credentials: "same-origin"})
             .then(response => {

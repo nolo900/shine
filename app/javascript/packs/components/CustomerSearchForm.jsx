@@ -20,7 +20,6 @@ class CustomerSearchForm extends Component {
                     <h1 className="h2">Quickly Search Customer Records Across Multiple Fields</h1>
                 </header>
                 <section>
-
                     <div className="input-group input-group-lg">
                         <label className="sr-only" htmlFor="keywords">Keywords</label>
                         <input

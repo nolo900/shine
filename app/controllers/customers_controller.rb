@@ -46,6 +46,7 @@ class CustomersController < ApplicationController
   # GET /customers/1
   # GET /customers/1.json
   def show
+    sleep 4
   end
 
   # GET /customers/new

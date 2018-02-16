@@ -20,6 +20,7 @@ class CustomerDetail extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.readFile = this.readFile.bind(this);
         this.notifySuccess = this.notifySuccess.bind(this);
+        this.notifyFailure = this.notifyFailure.bind(this);
     }
 
     componentDidMount(props) {
@@ -33,7 +34,7 @@ class CustomerDetail extends Component {
     }
 
     notifySuccess = () => toast.success("User Details Saved!");
-    notifyFailure = () => toast("Whoops, try again!");
+    notifyFailure = () => toast.error("Whoops, try again!");
 
     handleInputChange(event) {
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Spinner from './Spinner';
 import '../fade_styles.scss';
 
 class CustomerSearchResults extends Component {
@@ -8,6 +9,18 @@ class CustomerSearchResults extends Component {
     constructor(props){
         super(props);
         this.state = { };
+    }
+
+    componentDidMount() {
+        
+    }
+
+    componentWillUnmount() {
+
+    }
+
+    componentDidUpdate(){
+
     }
 
     getRandomInt(max) {
@@ -45,9 +58,14 @@ class CustomerSearchResults extends Component {
             </Fade>
         ));
 
+        if(this.props.isLoading){
+            return <Spinner/>;
+        }
+
         return (
             <section className="search-results">
                 <header>
+
                     <h1 className="h3">Results { (this.props.customers.length == 100) ? '100+' : this.props.customers.length} </h1>
                 </header>
 

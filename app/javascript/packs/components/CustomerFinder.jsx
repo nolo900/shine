@@ -4,10 +4,11 @@ import CustomerSearchResults from './CustomerSearchResults';
 
 class CustomerFinder extends Component {
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
-            customers: []
+            customers: [],
+            isLoading: true
         }
     }
 
@@ -16,17 +17,18 @@ class CustomerFinder extends Component {
             .then(response => {
                 return response.json();
             }).then(data => {
-            this.setState({customers: data.customers})
+                this.setState({customers: data.customers, isLoading: false})
         });
     }
 
     searchCustomers(keywords) {
-        if(keywords.length < 2){return}
+        // if(keywords.length < 2){return}
+        this.setState({ isLoading: true });
         fetch(`/customers.json?keywords=${keywords}`,{credentials: "same-origin"})
             .then(response => {
                 return response.json();
             }).then(data => {
-            this.setState({customers: data.customers})
+            this.setState({customers: data.customers, isLoading:false})
         });
     }
 
@@ -34,7 +36,7 @@ class CustomerFinder extends Component {
         return (
             <div className="customer-finder">
                 <CustomerSearchForm searchCustomers={this.searchCustomers.bind(this)} />
-                <CustomerSearchResults customers={this.state.customers}/>
+                <CustomerSearchResults customers={this.state.customers} isLoading={this.state.isLoading} />
             </div>
         );
     }
